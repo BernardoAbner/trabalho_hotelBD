@@ -839,6 +839,6 @@ def menu_de_criacao():
     print("="*60)
 
 if __name__ == "__main__":
-    menu_de_criacao()  # Exibe a tela inicial antes de iniciar o menu
-    menu()  # Chama o menu principal
+    menu_de_criacao()  
+    menu()  
 
