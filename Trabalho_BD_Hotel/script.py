@@ -2,7 +2,7 @@ import mysql.connector
 import datetime
 import random
 
-# Conectar ao banco de dados
+
 def connect():
     return mysql.connector.connect(
         host="localhost",
@@ -16,7 +16,7 @@ def formatar_data(data):
     return data.strftime("%d-%m-%Y") if isinstance(data, datetime.date) else data
 
 
-# Funções CRUD para CLIENTE
+
 def create_cliente():
     cpf = input("Informe o CPF: ")
     telefone = input("Informe o Telefone: ")
@@ -146,7 +146,7 @@ def delete_cliente():
 
 
 
-# Funções CRUD para QUARTO
+
 def create_quarto():
     num_quarto = int(input("Informe o Número do Quarto: "))
     print("Tipos de quarto:\n1. Standard\n2. Deluxe\n3. Suíte")
@@ -297,7 +297,7 @@ def delete_quarto():
 
 
 
-# Funções CRUD para RESERVA
+
 def create_reserva():
     num_reserva = random.randint(0, 100)
     
@@ -550,7 +550,7 @@ def relatorio_quartos():
     db = connect()
     cursor = db.cursor()
 
-    # Relatório de quartos
+   
     cursor.execute("SELECT COUNT(*) FROM QUARTO")
     total_quartos = cursor.fetchone()[0]
 
@@ -565,7 +565,7 @@ def relatorio_quartos():
     cursor.execute("SELECT AVG(VALOR_RESERVA / QUANTIDADE_PESSOAS) FROM RESERVA WHERE QUANTIDADE_PESSOAS > 0")
     media_pago_por_pessoa = cursor.fetchone()[0] or 0  # Evitar divisão por zero
 
-    # Exibir o relatório com bordas e formatação
+    
     print("\n+" + "-"*60 + "+")
     print("|{:^60}|".format("RELATÓRIO DE QUARTOS"))
     print("+" + "-"*60 + "+")
@@ -587,7 +587,7 @@ def relatorio_hospedes():
     db = connect()
     cursor = db.cursor()
 
-    # Relatório de hóspedes
+
     cursor.execute("SELECT COUNT(DISTINCT CPF) FROM RESERVA")
     total_hospedes = cursor.fetchone()[0]
 
@@ -597,7 +597,7 @@ def relatorio_hospedes():
     cursor.execute("SELECT AVG(VALOR_RESERVA) FROM RESERVA")
     media_valor_reserva = cursor.fetchone()[0] or 0
 
-    # Exibir o relatório com bordas e formatação
+    
     print("\n+" + "-"*60 + "+")
     print("|{:^60}|".format("RELATÓRIO DE HÓSPEDES"))
     print("+" + "-"*60 + "+")
@@ -644,7 +644,7 @@ def menu_relatorios():
 
 
 
-# Menus organizados em submenus
+
 def menu():
     while True:
         print("\n"+"="*47)
@@ -785,7 +785,7 @@ def menu_reserva():
             print("\nOpção inválida. Tente novamente.")
 
 def menu_de_criacao():
-    # Informações do sistema
+    
     system_name = "Sistema de Gerenciamento de Hotel"
     created_by = (
         "Aidhan Freitas, Henrique Volpini, Samuel Lucas           |\n"
@@ -796,7 +796,7 @@ def menu_de_criacao():
     semestre = "2024/2"
     coracao = "❤️"
 
-    # Conectar ao banco de dados para contar os registros
+ 
     db = connect()
     cursor = db.cursor()
 
@@ -813,7 +813,7 @@ def menu_de_criacao():
     cursor.close()
     db.close()
 
-    # Exibir a tela inicial com bordas e formatação organizada
+
     print("\n" + "="*60)
     print(f"{system_name:^60}")
     print("="*60)
