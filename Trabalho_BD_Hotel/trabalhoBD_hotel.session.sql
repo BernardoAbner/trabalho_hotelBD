@@ -1,5 +1,5 @@
-CREATE DATABASE trabalhobd_hotel;
-USE trabalhobd_hotel;
+CREATE DATABASE trabalho;
+USE trabalho;
 
 
 DROP TABLE IF EXISTS RESERVA;
